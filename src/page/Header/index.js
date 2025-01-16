@@ -4,9 +4,9 @@ import { parser } from "../../lib/jsx-runtime/index.js";
 
 import styles from "./header.module.js";
 
-export const Header = () => parser`
+export const Header = ({ onOpenLogs }) => parser`
         <header class="${styles.container}">
             <img src=${"../../public/img/logo.svg"} alt="Logo" />
-            ${Icon({ name: "history", strokeColor: colors.text.default })}
+            ${Icon({ name: "history", strokeColor: colors.text.default, onClick: onOpenLogs })}
         </header>
     `;

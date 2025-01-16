@@ -44,7 +44,7 @@ export const ActionHistoryItem = ({
     <div class="${styles.container}">
         <div class="${styles["img-container"]}"></div>
         <div class="${styles.content}">
-            <div class="${typos.display.medium[14]} ${styles.body}">${username}</div>
+            <div class="${typos.display.medium[14]} ${styles.body}">@${username}</div>
             <div class="${typos.display.medium[14]} ${styles.body}">
                 ${formatTextToBoldTag(title)}를 
                 ${formatActionToText(action)}

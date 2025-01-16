@@ -278,6 +278,36 @@
     flex-direction: column;
     gap: 10px;
 }
+.container-0cc06ec {
+    width: 366px;
+    height: 680px;
+    padding: var(--gap-100);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-100);
+
+    position: fixed;
+    top: 64px;
+    right: 80px;
+
+    background-color: var(--surface-default);
+    border-radius: var(--gap-200);
+}
+
+.header-0cc06ec {
+    width: 100%;
+    height: 48px;
+    padding: var(--gap-100) var(--gap-100) var(--gap-100) var(--gap-200);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-3660315 {
+    background-color: var(--surface-alt);
+}
+
 .container-3660315 {
     width: calc(100% - 160px);
     height: calc(100vh - 64px);
