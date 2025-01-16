@@ -2,7 +2,6 @@ import { Alert } from "../../components/Alert/index.js";
 import { Card } from "../../components/Card/index.js";
 import { ColumnTitle } from "../../components/ColumnTitle/index.js";
 import { useState } from "../../lib/HamReact/hooks/useState.js";
-import { store } from "../../lib/HamReact/store.js";
 import { parser } from "../../lib/jsx-runtime/index.js";
 
 import styles from "./todoColumn.module.js";
@@ -11,27 +10,29 @@ import styles from "./todoColumn.module.js";
  *
  * @param {object} props - Todo 컬럼의 속성.
  * @param {number} props.id - Todo 컬럼의 식별자.
- * @param {object[]} props.todoStore - Todo 저장소.
+ * @param {object[]} props.columnStore - Todo의 집합인 컬럼 저장소.
  * @param {string} props.name - Todo 컬럼의 이름.
  * @param {Function} props.onClickDel - Todo 컬럼 삭제 버튼 클릭 시 실행할 함수.
  * @returns {VDOM} - Todo 컬럼을 나타내는 VDOM.
  */
 export const TodoColumn = ({
-  id: columnId, todoStore, name, onClickDel,
+  id: columnId, columnStore, name, onClickDel,
 }) => {
-  const [todos, setTodos] = useState(todoStore.getTodos(columnId));
+  const [todos, setTodos] = useState(columnStore.getTodos(columnId));
+  console.log("여기는 투두 컬럼!", columnId, columnStore.getTodos(columnId), todos);
+
   const [cardType, setCardType] = useState("add-edit");
   const [todoFlag, setTodoFlag] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
 
   const createTodo = () => {
-    const newTodoId = todoStore.addTodo({ columnId });
+    const newTodoId = columnStore.addTodo({ columnId });
     setTodos([...todos, newTodoId]);
     setTodoFlag(true);
   };
 
   const deleteTodo = (id) => {
-    const deletedTodos = todoStore.removeTodo({
+    const deletedTodos = columnStore.removeTodo({
       columnId,
       todoId: id,
     });

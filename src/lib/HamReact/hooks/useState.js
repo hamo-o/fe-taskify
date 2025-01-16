@@ -5,6 +5,7 @@ import {
   getStoreState,
   setStoreState,
   increaseStateId,
+  resetStateId,
 } from "../store.js";
 
 /**
@@ -15,10 +16,12 @@ import {
 export const useState = (initState) => {
   const currentStateId = stateId;
   setInitState(currentStateId, initState);
+  getStoreState(currentStateId);
 
   const setState = (nextState) => {
     if (Object.is(getStoreState(currentStateId), nextState)) return;
     setStoreState(currentStateId, nextState);
+    resetStateId();
     updateDOM();
   };
 

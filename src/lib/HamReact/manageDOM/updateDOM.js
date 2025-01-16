@@ -1,7 +1,6 @@
 import {
   getNewVDOM, getRoot, getVDOM, setVDOM,
 } from "../manageVDOM/index.js";
-import { resetStateId } from "../store.js";
 
 import { createDOM } from "./createDOM.js";
 import setAttrs from "./setAttrs.js";
@@ -53,12 +52,11 @@ const updateElement = ($parent, newVDOM, initVDOM) => {
   }
 };
 
-export const updateDOM = (
-  $parent = getRoot(),
-  newVDOM = getNewVDOM(),
-  initVDOM = getVDOM(),
-) => {
-  resetStateId();
+export const updateDOM = () => {
+  const $parent = getRoot();
+  const initVDOM = getVDOM();
+  const newVDOM = getNewVDOM();
+
   updateElement($parent, newVDOM, initVDOM);
   setVDOM(newVDOM);
 };
